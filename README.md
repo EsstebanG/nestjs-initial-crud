@@ -1,198 +1,98 @@
-# 🎬 Proyecto CRUD de Películas con NestJS
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+</p>
 
-Este proyecto es una **API RESTful** desarrollada con **NestJS** que permite la **gestión completa de películas**.  
-El sistema soporta operaciones **CRUD** (Crear, Leer, Actualizar y Eliminar) y está diseñado para mantener una arquitectura limpia, modular y escalable.
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
----
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## 👥 Equipo de desarrollo
+## Description
 
-| Desarrollador | Rol | Responsabilidades principales |
-|----------------|-----|--------------------------------|
-| **Juan Esteban Castillo Guardia** | *Backend Lead / Arquitectura* | Configurar el entorno NestJS, estructura del proyecto, conexión a PostgreSQL, entidades y migraciones. |
-| **Luis Fernando Rodríguez López** | *Desarrollador API / Lógica de Negocio* | Implementar controladores y servicios CRUD de películas. Añadir validaciones con `ValidationPipe` y `class-validator`. |
-| **Juan Esteban Garzón Luján** | *DevOps / QA / Documentación* | Configurar Docker, flujo Gitflow, documentación con Swagger, y pipelines de CI/CD. |
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
----
-
-## 🎯 Objetivo del proyecto
-
-Desarrollar una API REST para gestionar una base de datos de **películas**, donde los usuarios puedan:
-
-- Agregar nuevas películas.  
-- Consultar todas las películas o una específica.  
-- Actualizar información de una película existente.  
-- Eliminar películas de la base de datos.  
-
----
-
-## ⚙️ Tecnologías utilizadas
-
-- **NestJS** – Framework principal del backend.  
-- **TypeScript** – Lenguaje de desarrollo.  
-- **PostgreSQL** – Base de datos relacional.  
-- **TypeORM** – ORM para la persistencia de datos.  
-- **Docker & Docker Compose** – Contenerización de servicios.  
-- **Jest** – Framework de pruebas unitarias.  
-- **Swagger** – Generación automática de documentación de API.  
-- **Git & GitHub** – Control de versiones.  
-- **ESLint + Prettier** – Estilo y calidad del código.  
-
----
-
-## 🎬 Estructura de la base de datos
-
-Entidad principal: **Movie**
-
-| Campo | Tipo | Descripción |
-|--------|------|-------------|
-| `id` | `UUID` | Identificador único de la película. |
-| `title` | `varchar(150)` | Título de la película. |
-| `director` | `varchar(100)` | Nombre del director. |
-| `releaseYear` | `int` | Año de estreno. |
-| `genre` | `varchar(50)` | Género de la película. |
-| `rating` | `decimal(2,1)` | Calificación (0.0 a 10.0). |
-| `createdAt` | `timestamp` | Fecha de creación del registro. |
-| `updatedAt` | `timestamp` | Fecha de última modificación. |
-
-Posibles extensiones de la base de datos:
-- Entidad **Review** para reseñas de usuarios.  
-- Entidad **User** para autenticación y control de acceso.  
-
----
-
-## 🧱 Estructura del proyecto
+## Project setup
 
 ```bash
-src/
-├── main.ts
-├── app.module.ts
-├── movies/
-│   ├── movies.module.ts
-│   ├── movies.controller.ts
-│   ├── movies.service.ts
-│   ├── dto/
-│   │   ├── create-movie.dto.ts
-│   │   └── update-movie.dto.ts
-│   ├── entities/
-│   │   └── movie.entity.ts
-│   └── tests/
-│       └── movies.service.spec.ts
-├── common/
-│   ├── filters/
-│   ├── interceptors/
-│   └── pipes/
+$ npm install
 ```
 
----
-
-## 🧩 Distribución del trabajo
-
-| Tarea | Asignado a | Descripción |
-|--------|-------------|-------------|
-| Configuración Nest + Docker | Juan Esteban Castillo Guardia | Inicializar proyecto, crear `Dockerfile` y `docker-compose.yml`, configurar conexión a PostgreSQL. |
-| Implementación CRUD `movies` | Luis Fernando Rodríguez López | Implementar controladores, servicios y DTOs con validaciones. |
-| Documentación Swagger + CI/CD | Juan Esteban Garzón Luján | Documentar endpoints y configurar GitHub Actions para testing automático. |
-
----
-
-## 🌿 Flujo Git y ramas
-
-Se sigue el modelo **Gitflow**:
-
-- `main`: versión estable y lista para producción.  
-- `develop`: rama de integración de nuevas características.  
-- `feature/<nombre>`: ramas para desarrollo de nuevas funciones.  
-- `fix/<nombre>`: corrección de errores.  
-- `release/<versión>`: preparación para lanzamientos.
-
-### Ejemplo de flujo
+## Compile and run the project
 
 ```bash
-# Crear una nueva feature
-git checkout -b feature/agregar-endpoint-peliculas
+# development
+$ npm run start
 
-# Subir cambios
-git add .
-git commit -m "feat: endpoint CRUD de películas listo"
-git push origin feature/agregar-endpoint-peliculas
+# watch mode
+$ npm run start:dev
 
-# Crear Pull Request hacia develop
+# production mode
+$ npm run start:prod
 ```
 
----
-
-## 🐳 Configuración Docker
-
-Archivo `docker-compose.yml`:
-
-```yaml
-version: '3.9'
-
-services:
-  db:
-    image: postgres:16-alpine
-    container_name: movies-db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: movies
-    ports:
-      - '5432:5432'
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-
-  app:
-    build: .
-    container_name: movies-api
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/movies
-    ports:
-      - '3000:3000'
-    command: npm run start:dev
-
-volumes:
-  pg_data:
-```
-
----
-
-## 🧠 Cómo ejecutar el proyecto
+## Run tests
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/<org>/movies-crud-nest.git
+# unit tests
+$ npm run test
 
-# Instalar dependencias
-npm install
+# e2e tests
+$ npm run test:e2e
 
-# Levantar el entorno
-docker compose up --build
-
-# Documentación Swagger disponible en
-http://localhost:3000/api
+# test coverage
+$ npm run test:cov
 ```
 
----
+## Deployment
 
-## ✅ Cobertura mínima de pruebas
+When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-El proyecto debe mantener una cobertura mínima del **40%** en Jest.
+If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
 
 ```bash
-npm run test:cov
+$ npm install -g @nestjs/mau
+$ mau deploy
 ```
 
----
+With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
-## 📋 Notas finales
+## Resources
 
-- Todos los PR deben revisarse antes de mergear a `develop`.  
-- Se deben seguir los **Conventional Commits** (`feat:`, `fix:`, `refactor:`).  
-- Las migraciones deben ejecutarse con `npm run typeorm migration:run`.  
-- La base de datos debe reinicializarse y probarse antes de cada sprint.  
-- Swagger se actualiza automáticamente con cada despliegue.
+Check out a few resources that may come in handy when working with NestJS:
 
----
+- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
+- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
+- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
+- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
+- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
+- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
+- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
+- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## License
+
+Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
