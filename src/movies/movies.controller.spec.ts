@@ -17,6 +17,7 @@ describe('MoviesController', () => {
             findMovieById: jest.fn(),
             updateMovie: jest.fn(),
             deleteMovie: jest.fn(),
+            seedMovies: jest.fn(),
           },
         },
       ],

@@ -5,8 +5,8 @@ export async function ensureDatabaseExists() {
   const client = new Client({
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
     database: 'postgres', // se conecta a la DB por defecto
   });
 

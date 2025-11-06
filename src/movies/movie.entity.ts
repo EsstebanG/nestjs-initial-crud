@@ -17,7 +17,7 @@ export class Movie {
   @Column({ type: 'varchar', length: 50 })
   genre: string;
 
-  @Column({ type: 'decimal', precision: 2, scale: 1 })
+  @Column({ type: 'decimal', precision: 3, scale: 1 })
   rating: number;
 
   @CreateDateColumn({ type: 'timestamp' })
